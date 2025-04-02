@@ -3,11 +3,20 @@ import { CORSPlugin } from '@orpc/server/plugins';
 import corsConfig from 'src/config/cors';
 
 import router from 'src/controllers/rpc';
+import { openAPIGenerator } from 'src/utils';
 
-export default new RPCHandler(router, {
-	plugins: [
-		new CORSPlugin({
-			...corsConfig,
-		}),
-	],
-}).handle;
+export default {
+	handler: new RPCHandler(router, {
+		plugins: [
+			new CORSPlugin({
+				...corsConfig,
+			}),
+		],
+	}),
+	docs: await openAPIGenerator.generate(router, {
+		info: {
+			title: 'My RPC API',
+			version: '1.0.0',
+		},
+	}),
+};

@@ -20,6 +20,9 @@ importers:
       '@orpc/zod':
         specifier: ^0.51.0
         version: 0.51.0(@orpc/contract@0.51.0)(@orpc/server@0.51.0(hono@4.7.5)(next@15.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)))(hono@4.7.5)(next@15.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+      hono:
+        specifier: ^4.7.5
+        version: 4.7.5
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.7.5

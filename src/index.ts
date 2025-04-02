@@ -11,42 +11,8 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { restHandler, rpcHandler } from 'src/app';
-import { PATH_PREFIXES } from 'src/config/constants';
+import app from 'src/app';
 
 export default {
-	async fetch(request, env, ctx) {
-		const { pathname } = new URL(request.url);
-
-		if (pathname.startsWith(PATH_PREFIXES.API)) {
-			const { matched, response } = await restHandler(request, {
-				prefix: PATH_PREFIXES.API,
-				context: {},
-			});
-
-			if (matched) return response;
-		}
-
-		if (pathname.startsWith(PATH_PREFIXES.RPC)) {
-			const { matched, response } = await rpcHandler(request, {
-				prefix: PATH_PREFIXES.RPC,
-				context: {},
-			});
-
-			if (matched) return response;
-		}
-
-		return new Response(
-			JSON.stringify({
-				message: `Path ${pathname} not found`,
-			}),
-			{
-				status: 404,
-				statusText: 'Not Found',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			}
-		);
-	},
+	fetch: app.fetch,
 } satisfies ExportedHandler<Env>;
