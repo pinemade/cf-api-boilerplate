@@ -18,9 +18,11 @@
 	},
 	"dependencies": {
 		"@orpc/client": "^0.51.0",
+		"@orpc/contract": "^0.52.0",
 		"@orpc/openapi": "^0.51.0",
 		"@orpc/server": "^0.51.0",
 		"@orpc/zod": "^0.51.0",
-		"hono": "^4.7.5"
+		"hono": "^4.7.5",
+		"zod": "^3.24.2"
 	}
 }
