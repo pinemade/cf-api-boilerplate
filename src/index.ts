@@ -11,7 +11,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import { rest, rpc } from 'src/app';
+import { restHandler, rpcHandler } from 'src/app';
 import { PATH_PREFIXES } from 'src/config/constants';
 
 export default {
@@ -19,7 +19,7 @@ export default {
 		const { pathname } = new URL(request.url);
 
 		if (pathname.startsWith(PATH_PREFIXES.API)) {
-			const { matched, response } = await rest.handle(request, {
+			const { matched, response } = await restHandler(request, {
 				prefix: PATH_PREFIXES.API,
 				context: {},
 			});
@@ -28,7 +28,7 @@ export default {
 		}
 
 		if (pathname.startsWith(PATH_PREFIXES.RPC)) {
-			const { matched, response } = await rpc.handle(request, {
+			const { matched, response } = await rpcHandler(request, {
 				prefix: PATH_PREFIXES.RPC,
 				context: {},
 			});

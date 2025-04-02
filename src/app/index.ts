@@ -1,2 +1,2 @@
-export { default as rest } from './rest';
-export { default as rpc } from './rpc';
+export { default as restHandler } from './rest';
+export { default as rpcHandler } from './rpc';
