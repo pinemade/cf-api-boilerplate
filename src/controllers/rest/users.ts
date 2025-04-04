@@ -1,23 +1,35 @@
 import { implement } from '@orpc/server';
 import usersContact from 'src/controllers/rest/users.contact';
 
-const os = implement(usersContact);
+const implementor = implement(usersContact);
 
-export default os.router({
-	getUsers: os.getUsers.handler(async (c) => {
-		return {
-			data: [
-				{
-					id: '1',
-					name: 'John Doe',
-					email: '',
-				},
-			],
-		};
-	}),
-	uploadUserAvatar: os.uploadUserAvatar.handler(async (_c) => {
-		return {
-			message: 'success',
-		};
-	}),
-});
+export default implementor
+	/**
+	 * register domain-specific middleware and context here
+	 */
+	// .use()
+	.router({
+		getUsers: implementor.getUsers
+			/**
+			 * register path specific middleware here
+			 */
+			// .use()
+			.handler(async (c) => {
+				return {
+					body: {
+						data: [
+							{
+								id: '1',
+								name: 'John Doe',
+								email: '',
+							},
+						],
+					},
+				};
+			}),
+		uploadUserAvatar: implementor.uploadUserAvatar.handler(async (_) => {
+			return {
+				message: 'success',
+			};
+		}),
+	});

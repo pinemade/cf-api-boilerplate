@@ -1,5 +1,6 @@
 import { RPCHandler } from '@orpc/server/fetch';
 import { CORSPlugin } from '@orpc/server/plugins';
+import { APP_OPEN_API_INFO } from 'src/config/constants';
 import corsConfig from 'src/config/cors';
 
 import router from 'src/controllers/rpc';
@@ -14,9 +15,6 @@ export default {
 		],
 	}),
 	docs: await openAPIGenerator.generate(router, {
-		info: {
-			title: 'My RPC API',
-			version: '1.0.0',
-		},
+		info: APP_OPEN_API_INFO.RPC,
 	}),
 };

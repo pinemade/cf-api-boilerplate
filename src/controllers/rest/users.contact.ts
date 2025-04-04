@@ -1,12 +1,13 @@
 import { oc } from '@orpc/contract';
 import { oz } from '@orpc/zod';
+import { PATH_PREFIXES } from 'src/config/constants';
 import { z } from 'zod';
 
 export default oc
 	/**
-	 * define meta here
+	 * register meta here
 	 */
-	// .$meta({})
+	.prefix(PATH_PREFIXES.USERS)
 	.router({
 		/**
 		 * define contract route here
@@ -14,8 +15,9 @@ export default oc
 		getUsers: oc
 			.route({
 				method: 'GET',
-				path: '/users',
+				path: '/',
 				inputStructure: 'detailed',
+				outputStructure: 'detailed',
 			})
 			.input(
 				z.object({
@@ -27,20 +29,22 @@ export default oc
 			)
 			.output(
 				z.object({
-					data: z.array(
-						z.object({
-							id: z.string({}),
-							name: z.string(),
-							email: z.string(),
-						})
-					),
+					body: z.object({
+						data: z.array(
+							z.object({
+								id: z.string({}),
+								name: z.string(),
+								email: z.string(),
+							})
+						),
+					}),
 				})
 			),
 
 		uploadUserAvatar: oc
 			.route({
 				method: 'POST',
-				path: '/users/upload-avatar',
+				path: '/upload-avatar',
 			})
 			.input(
 				z.object({

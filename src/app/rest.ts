@@ -1,6 +1,7 @@
 import { OpenAPIHandler } from '@orpc/openapi/fetch';
 import { CORSPlugin } from '@orpc/server/plugins';
 import { ZodSmartCoercionPlugin } from '@orpc/zod';
+import { APP_OPEN_API_INFO } from 'src/config/constants';
 import corsConfig from 'src/config/cors';
 
 import router from 'src/controllers/rest';
@@ -16,9 +17,6 @@ export default {
 		],
 	}),
 	docs: await openAPIGenerator.generate(router, {
-		info: {
-			title: 'OpenAPI Exampleeee',
-			version: '1.0.0',
-		},
+		info: APP_OPEN_API_INFO.REST,
 	}),
 };
