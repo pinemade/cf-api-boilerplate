@@ -1,12 +1,12 @@
 import { OpenAPIV3_1 } from 'openapi-types';
 
 export const PATH_PREFIXES = {
-	API: '/api',
+	REST: '/api',
 	RPC: '/rpc',
 	REFERENCE: '/reference',
-	API_DOCS_JSON: '/reference/api/docs.json',
+	REST_DOCS_JSON: '/reference/api/docs.json',
 	RPC_DOCS_JSON: '/reference/rpc/docs.json',
-	API_DOCS_REFERENCE: '/reference/api',
+	REST_DOCS_REFERENCE: '/reference/api',
 	RPC_DOCS_REFERENCE: '/reference/rpc',
 
 	/**

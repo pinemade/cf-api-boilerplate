@@ -24,6 +24,7 @@
 		"@orpc/server": "^0.52.0",
 		"@orpc/zod": "^0.52.0",
 		"hono": "^4.7.5",
+		"workers-logger": "^0.2.1",
 		"zod": "^3.24.2"
 	}
 }

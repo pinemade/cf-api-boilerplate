@@ -19,6 +19,7 @@ export default oc
 				inputStructure: 'detailed',
 				outputStructure: 'detailed',
 			})
+			.meta({ a: 1 })
 			.input(
 				z.object({
 					query: z.object({
@@ -46,6 +47,7 @@ export default oc
 				method: 'POST',
 				path: '/upload-avatar',
 			})
+			.meta({ a: 1 })
 			.input(
 				z.object({
 					body: oz.file('Fileee'),
